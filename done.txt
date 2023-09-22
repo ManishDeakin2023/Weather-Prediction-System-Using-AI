@@ -1,0 +1,6 @@
+created server
+created end points
+7b8afd7134a75a2304fbef68b11bce7d
+intalled body parser
+installed dotenv to hide the api key
+installing node-fetch to ftch data from api
