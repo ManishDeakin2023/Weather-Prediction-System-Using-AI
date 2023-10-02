@@ -366,7 +366,7 @@ nav .units button{
 #city::placeholder{
   font-size: 15px;
   font-weight: 700;
-  color: #3C3C3C;
+  color:#800080;
 }
 
 svg{
@@ -426,6 +426,7 @@ svg{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: opacity 0.5s ease, bottom 0.5s ease;
 }
 
 .view{
