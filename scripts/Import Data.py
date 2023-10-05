@@ -6,6 +6,10 @@ from sqlalchemy import Integer, String, Numeric, VARCHAR, DECIMAL
 from cryptography.fernet import Fernet
 import numpy as np
 import re
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://weather.com/en-AU/weather/today/l/ASXX0023:1:AS?Goto=Redirected"
 
 # ---------------- Terminal text formatting ----------------
 def redText(Text): return(f"\033[91m{Text}\033[0m")
