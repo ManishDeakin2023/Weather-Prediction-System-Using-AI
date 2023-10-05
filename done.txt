@@ -10,4 +10,3 @@ NOTE:
 we are sending data in get request why?
 let suppose multiple users are using our webpage then the user who search for mumbai and if suppose
 another user search for pune then the data get clashed.
-hello

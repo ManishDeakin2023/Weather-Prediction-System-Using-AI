@@ -22,7 +22,7 @@ body{
   padding: 50px;
   background: var(--primary-clr);
   transition: background-image 0.3s ease;
-  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/public/images/clear-day.jpg");
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/1.png");
   background-size: cover;
   background-position: center;
 }
@@ -117,7 +117,7 @@ img{
 }
 
 .weather-icon{
-  width: 100%;
+
   height: 15px;
   text-align: center;
   margin-top: 20px;
@@ -127,6 +127,7 @@ img{
 .weather-icon #icon{
   width: 65%;
   object-fit: fill;
+  width: 100px;
 }
 
 .temprature{
@@ -249,7 +250,7 @@ nav .units button{
   width: 100px;
   height: 130px;
   border-radius: 20px;
-  color: #1a1a1a;
+  color: #5598fd;
   background-color: #fff;
   text-align: center;
   padding: 10px 0;
@@ -331,9 +332,7 @@ nav .units button{
 }
 
 
-=======
-  font-family: 'Tajawal', sans-serif;
-}
+
 
 .container{
   width: 100%;
@@ -369,12 +368,12 @@ nav .units button{
   color:#800080;
 }
 
-svg{
+/*svg{
   position: absolute;
   top: 50px;
-  right: 60px;
+  /* right: 60px; 
   cursor: pointer;
-}
+}*/
 
 .date-time{
   position: absolute;
@@ -404,7 +403,7 @@ svg{
 .place-info, .temp, .disc{
   font-size: 75px;
   font-weight: 900;
-  color: #fff;
+  color: #5598fd;
   line-height: 80px;
 }
 
@@ -436,14 +435,14 @@ svg{
   cursor: pointer;
 }
 
-.svg{
+/* .svg{
   width: 22px;
   position: absolute;
-  top: 136px;
-  right: 15px;
+  top: 88px;
+  right: 13px;
   cursor: pointer;
   transition: 0.5s;
-}
+} */
 
 .info-card{
   width: 300px;

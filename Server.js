@@ -1,43 +1,45 @@
 const express = require('express');
-const bodyParser = require("body-parser");
-
-const port = process.env.PORT || 3000
+const bodyParser = require('body-parser');
+const port = process.env.PORT || 3000;
 const app = express();
-const fetch =require('node-fetch');
-app.use(bodyParser.urlencoded({ extended: true }));
+const fetch = require('node-fetch');
+app.use(express.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 require('dotenv').config();
 app.use(express.static('public'));
 app.set("view engine", "ejs");
-// //creating end points
 
 app.get('/', (req, res) => {
-    const sendData = { location: "Location", dis: "Description", temp: "Temp" };
-    res.render("index.ejs",{sendData:sendData});
+    res.render("index.ejs", {
+        sendData: {}
+    });
 });
 
 app.post('/', async (req, res) => {
-    let location = await req.body.city;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.APIKEY}&units=metric`;
-    const response = await fetch(url);
-    //converting hex to json
-    const weatherData =  await response.json();
-    console.log(weatherData);
-    const temp = weatherData.main.temp;
-    console.log(temp);
-    const dis = weatherData.weather[0].description;
-    // console.log(dis);
-    // //get icon
-    // const icon = weatherData.weather[0].icon;
-    // const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-    // res.write(`<h1>current weather in ${location} is ${dis} </h1>`);
-    // res.write(`<h1>current tempreture is ${temp} </h1>`);
-    // res.write(`<img src = ${iconUrl}></img>`);
-
-    const sendData = {};
-    sendData.location = location;
-    sendData.temp = temp;
-    sendData.dis = dis;
-    res.render("index.ejs",{sendData:sendData});
+    try {
+        const location = req.body.query;
+        console.log("Location received:", location);
+        const apiKey = "6K779N9CQP2Q7TUPFKLMU4PGR";
+        const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&key=${apiKey}&contentType=json`;
+        console.log("API URL:", apiUrl);
+        const response = await fetch(apiUrl);
+        if (response.ok) {
+            const weatherData = await response.json();
+            // Now you can do whatever you want with the weather data, e.g., send it as a response or process it further.
+            res.json(weatherData);
+        } else {
+            res.status(response.status).json({
+                error: "API request failed"
+            });
+        }
+    } catch (error) {
+        console.error("Error fetching weather data:", error);
+        res.status(500).json({
+            error: "Error fetching weather data"
+        });
+    }
 });
 
 app.listen(port, () => {
